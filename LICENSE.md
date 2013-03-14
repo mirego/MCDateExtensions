@@ -1,11 +1,3 @@
-MCDateExtensions.iOS
-====================
-
-Extensions on the dates classes
-
-License
-=======
-
 Copyright (c) 2013, Mirego, Inc.
 All rights reserved.
 
