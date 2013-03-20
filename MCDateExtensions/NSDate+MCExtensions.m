@@ -120,16 +120,40 @@
     return [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self options:0];
 }
 
-+ (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
++ (NSDateComponents *)differenceInCalendarUnit:(NSCalendarUnit)calendarUnit betweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     
     NSDate *fromDate, *toDate;
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate interval:NULL forDate:fromDateTime];
-    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate interval:NULL forDate:toDateTime];
+    [calendar rangeOfUnit:calendarUnit startDate:&fromDate interval:NULL forDate:fromDateTime];
+    [calendar rangeOfUnit:calendarUnit startDate:&toDate interval:NULL forDate:toDateTime];
     
-    NSDateComponents *difference = [calendar components:NSDayCalendarUnit fromDate:fromDate toDate:toDate options:0];
+    NSDateComponents *difference = [calendar components:calendarUnit fromDate:fromDate toDate:toDate options:0];
+    return difference;
+}
+
++ (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
+{
+    NSDateComponents *difference = [self differenceInCalendarUnit:NSDayCalendarUnit betweenDate:fromDateTime andDate:toDateTime];
     return [difference day];
+}
+
++ (NSInteger)weeksBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
+{
+    NSDateComponents *difference = [self differenceInCalendarUnit:NSWeekCalendarUnit betweenDate:fromDateTime andDate:toDateTime];
+    return [difference week];
+}
+
++ (NSInteger)monthsBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
+{
+    NSDateComponents *difference = [self differenceInCalendarUnit:NSMonthCalendarUnit betweenDate:fromDateTime andDate:toDateTime];
+    return [difference month];
+}
+
++ (NSInteger)yearsBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
+{
+    NSDateComponents *difference = [self differenceInCalendarUnit:NSYearCalendarUnit betweenDate:fromDateTime andDate:toDateTime];
+    return [difference year];
 }
 
 @end
