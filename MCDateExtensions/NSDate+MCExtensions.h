@@ -23,10 +23,15 @@
 - (NSDate *)firstOfWeek;
 
 - (NSDate *)dateByAddingYears:(NSInteger)years;
+- (NSDate *)dateByAddingQuarters:(NSInteger)quarters;
+- (NSDate *)dateByAddingMonths:(NSInteger)months;
+- (NSDate *)dateByAddingWeeks:(NSInteger)weeks;
 - (NSDate *)dateByAddingDays:(NSInteger)days;
 - (NSDate *)dateByAddingHours:(NSInteger)hours;
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes;
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds;
+
+- (NSDate *)dateByAddingCalendarUnit:(NSCalendarUnit)calendarUnit value:(NSInteger)value;
 
 + (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime;
 + (NSInteger)weeksBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime;

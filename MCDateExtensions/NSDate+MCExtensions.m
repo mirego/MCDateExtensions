@@ -82,42 +82,89 @@
 
 - (NSDate *)dateByAddingYears:(NSInteger)years
 {
-    NSDateComponents* components = [self componentsWithUnits:0];
-    [components setYear:years];
-    [components setCalendar:[NSCalendar currentCalendar]];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self options:0];
+    return [self dateByAddingCalendarUnit:NSYearCalendarUnit value:years];
+}
+
+- (NSDate *)dateByAddingQuarters:(NSInteger)quarters
+{
+    return [self dateByAddingCalendarUnit:NSQuarterCalendarUnit value:quarters];
+}
+
+- (NSDate *)dateByAddingMonths:(NSInteger)months
+{
+    return [self dateByAddingCalendarUnit:NSMonthCalendarUnit value:months];
+}
+
+- (NSDate *)dateByAddingWeeks:(NSInteger)weeks
+{
+    return [self dateByAddingCalendarUnit:NSWeekCalendarUnit value:weeks];
 }
 
 - (NSDate *)dateByAddingDays:(NSInteger)days
 {
-    NSDateComponents* components = [self componentsWithUnits:0];    
-    [components setDay:days];
-    [components setCalendar:[NSCalendar currentCalendar]];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self options:0];
+    return [self dateByAddingCalendarUnit:NSDayCalendarUnit value:days];
 }
 
 - (NSDate *)dateByAddingHours:(NSInteger)hours
 {
-    NSDateComponents* components = [self componentsWithUnits:0];    
-    [components setHour:hours];
-    [components setCalendar:[NSCalendar currentCalendar]];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self options:0];
+    return [self dateByAddingCalendarUnit:NSHourCalendarUnit value:hours];
 }
 
 - (NSDate *)dateByAddingMinutes:(NSInteger)minutes
 {
-    NSDateComponents* components = [self componentsWithUnits:0];    
-    [components setMinute:minutes];
-    [components setCalendar:[NSCalendar currentCalendar]];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self options:0];
+    return [self dateByAddingCalendarUnit:NSMinuteCalendarUnit value:minutes];
 }
 
 - (NSDate *)dateByAddingSeconds:(NSInteger)seconds
 {
-    NSDateComponents* components = [self componentsWithUnits:0];    
-    [components setSecond:seconds];
+    return [self dateByAddingCalendarUnit:NSSecondCalendarUnit value:seconds];
+}
+
+- (NSDate *)dateByAddingCalendarUnit:(NSCalendarUnit)calendarUnit value:(NSInteger)value
+{
+    NSDateComponents *components = [self componentsWithUnits:0];
     [components setCalendar:[NSCalendar currentCalendar]];
-    return [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self options:0];
+    
+    switch (calendarUnit) {
+        case NSYearCalendarUnit:
+            [components setYear:value];
+            break;
+            
+        case NSQuarterCalendarUnit:
+            [components setQuarter:value];
+            break;
+            
+        case NSMonthCalendarUnit:
+            [components setMonth:value];
+            break;
+            
+        case NSWeekCalendarUnit:
+            [components setWeek:value];
+            break;
+            
+        case NSDayCalendarUnit:
+            [components setDay:value];
+            break;
+            
+        case NSHourCalendarUnit:
+            [components setHour:value];
+            break;
+            
+        case NSMinuteCalendarUnit:
+            [components setMinute:value];
+            break;
+            
+        case NSSecondCalendarUnit:
+            [components setSecond:value];
+            break;
+            
+        default:
+            NSAssert(NO, @"Unsupported calendarUnit");
+            break;
+    }
+    
+    NSDate *date = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:self options:0];
+    return date;
 }
 
 + (NSDateComponents *)differenceInCalendarUnit:(NSCalendarUnit)calendarUnit betweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
