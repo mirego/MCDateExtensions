@@ -1,34 +1,71 @@
-MCDateExtensions.iOS
-====================
+# MCDateExtensions - Having fun with NSDate.
 
-Extensions on the dates classes
+```objective-c
+#import "NSDate+MCExtensions.h"
 
-License
-=======
+- (void)funWithMCDateExtensions
+{
+  NSDate* today = [NSDate date];
 
-Copyright (c) 2013, Mirego, Inc.
-All rights reserved.
+  // Today? Tomorrow? Yesterday?
+  [today isToday]; // returns YES
+  [today isYesterday]; // returns NO
+  [today isTomorrow]; // returns NO
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+  // Compare based on day
+  [today isSameDayAsDate:[NSDate date]]; // Most likely returns YES
 
-- Redistributions of source code must retain the above copyright notice,
-  this list of conditions and the following disclaimer.
-- Redistributions in binary form must reproduce the above copyright notice,
-  this list of conditions and the following disclaimer in the documentation
-  and/or other materials provided with the distribution.
-- Neither the name of the Mirego, Inc. nor the names of its contributors may
-  be used to endorse or promote products derived from this software without
-  specific prior written permission.
+  // Get all the details of a date
+  NSDateComponents* todayBrokenDown = [today components];
+  // ...with specific units
+  NSDateComponents* specificUnits = [today componentsWithUnits:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)];
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
+  // Some fun Maths!
+  NSDate* sameDayNextYear = [today dateByAddingYears:1];
+  NSDate* sameDayNextQuarter = [today dateByAddingQuarters:1];
+  NSDate* sameDayInTwoMonth = [today dateByAddingMonths:2];
+  NSDate* sameDayNextWeek = [today dateByAddingWeeks:1];
+  NSDate* yesterday = [today dateByAddingDays:-1];
+  NSDate* tomorrow = [today dateByAddingHours:24];
+  NSDate* nextHour = [today dateByAddingMinutes:60];
+  NSDate* inTwoMinutes = [today dateByAddingSeconds:120];
+  NSDate* inAFewSeconds = [today dateByAddingCalendarUnit:(NSSecondCalendarUnit) value:30];
+
+  // Differences
+  NSInteger days = [NSDate daysBetweenDate:today andDate:tomorrow]; // returns 1
+  NSInteger weeks = [NSDate daysBetweenDate:today andDate:sameDayNextWeek]; // returns 1
+  NSInteger months = [NSDate monthsBetweenDate:today andDate:sameDayInTwoMonth]; // returns 2
+  NSInteger years = [NSDate monthsBetweenDate:today andDate:sameDayNextYear]; // returns 1
+}
+```
+
+## Adding to your project
+
+If you're using [`CocoaPods`](http://cocoapods.org/), there's nothing simpler.
+Add the following to your [`Podfile`](http://docs.cocoapods.org/podfile.html)
+and run `pod install`
+
+```
+pod 'MCDateExtensions', :git => 'https://github.com/mirego/MCDateExtensions.git'
+```
+
+Don't forget to `#import "NSDate+MCExtensions.h"` where it's needed.
+
+
+## License
+
+MCDateExtensions is © 2013 [Mirego](http://www.mirego.com) and may be freely
+distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).
+See the [`LICENSE.md`](https://github.com/mirego/MCDateExtensions/blob/master/LICENSE.md) file.
+
+## About Mirego
+
+Mirego is a team of passionate people who believe that work is a place where you can innovate and have fun.
+We proudly built mobile applications for
+[iPhone](http://mirego.com/en/iphone-app-development/ "iPhone application development"),
+[iPad](http://mirego.com/en/ipad-app-development/ "iPad application development"),
+[Android](http://mirego.com/en/android-app-development/ "Android application development"),
+[Blackberry](http://mirego.com/en/blackberry-app-development/ "Blackberry application development"),
+[Windows Phone](http://mirego.com/en/windows-phone-app-development/ "Windows Phone application development") and
+[Windows 8](http://mirego.com/en/windows-8-app-development/ "Windows 8 application development").
+Learn more about our team at [life.mirego.com](http://life.mirego.com "Join our mobile design and development team").
