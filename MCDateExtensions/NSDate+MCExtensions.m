@@ -1,10 +1,29 @@
+// Copyright (c) 2013, Mirego
+// All rights reserved.
 //
-//  NSDate+MCExtensions.m
-//  MCDateExtensions.iOS
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
 //
-//  Created by Simon Audet on 10-10-12.
-//  Copyright (c) 2012 Mirego Inc. All rights reserved.
+// - Redistributions of source code must retain the above copyright notice,
+//   this list of conditions and the following disclaimer.
+// - Redistributions in binary form must reproduce the above copyright notice,
+//   this list of conditions and the following disclaimer in the documentation
+//   and/or other materials provided with the distribution.
+// - Neither the name of the Mirego nor the names of its contributors may
+//   be used to endorse or promote products derived from this software without
+//   specific prior written permission.
 //
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
 
 #import "NSDate+MCExtensions.h"
 
@@ -19,7 +38,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
         mcCurrentCalendarCache = [NSCalendar currentCalendar];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mcUpdateCurrentCalendar) name:NSCurrentLocaleDidChangeNotification object:nil];
     });
-    
+
     return mcCurrentCalendarCache;
 }
 
@@ -76,7 +95,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     NSDateComponents* comp1 = [calendar components:unitFlags fromDate:self];
     NSDateComponents* comp2 = [calendar components:unitFlags fromDate:date];
-    
+
     return
     [comp1 day] == [comp2 day] &&
     [comp1 month] == [comp2 month] &&
@@ -120,7 +139,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
 {
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     NSDateComponents* comp1 = [calendar components:unitFlags fromDate:self];
-    
+
     return [calendar dateFromComponents:comp1];
 }
 
@@ -132,7 +151,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
 - (NSDate *)firstOfMonthUsingCalendar:(NSCalendar *)calendar
 {
     NSDateComponents* components = [self componentsWithUnits:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit usingCalendar:calendar];
-    [components setDay:1];        
+    [components setDay:1];
     return [calendar dateFromComponents:components];
 }
 
@@ -147,7 +166,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
     NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
     [componentsToSubtract setDay: - ([weekdayComponents weekday] - [calendar firstWeekday])];
     NSDate *beginningOfWeek = [calendar dateByAddingComponents:componentsToSubtract toDate:self options:0];
-    
+
     NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:beginningOfWeek];
     return [calendar dateFromComponents:components];
 }
@@ -244,45 +263,45 @@ static NSCalendar *mcCurrentCalendarCache = nil;
 - (NSDate *)dateByAddingCalendarUnit:(NSCalendarUnit)calendarUnit value:(NSInteger)value usingCalendar:(NSCalendar *)calendar
 {
     NSDateComponents *components = [self componentsWithUnits:0 usingCalendar:calendar];
-    
+
     switch (calendarUnit) {
         case NSYearCalendarUnit:
             [components setYear:value];
             break;
-            
+
         case NSQuarterCalendarUnit:
             [components setQuarter:value];
             break;
-            
+
         case NSMonthCalendarUnit:
             [components setMonth:value];
             break;
-            
+
         case NSWeekCalendarUnit:
             [components setWeek:value];
             break;
-            
+
         case NSDayCalendarUnit:
             [components setDay:value];
             break;
-            
+
         case NSHourCalendarUnit:
             [components setHour:value];
             break;
-            
+
         case NSMinuteCalendarUnit:
             [components setMinute:value];
             break;
-            
+
         case NSSecondCalendarUnit:
             [components setSecond:value];
             break;
-            
+
         default:
             NSAssert(NO, @"Unsupported calendarUnit");
             break;
     }
-    
+
     NSDate *date = [calendar dateByAddingComponents:components toDate:self options:0];
     return date;
 }
@@ -299,7 +318,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
 + (NSDateComponents *)differenceInCalendarUnit:(NSCalendarUnit)calendarUnit betweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime usingCalendar:(NSCalendar *)calendar
 {
     NSDateComponents *difference = nil;
-    
+
     NSDate *fromDate;
     if ([calendar rangeOfUnit:calendarUnit startDate:&fromDate interval:NULL forDate:fromDateTime]) {
         NSDate *toDate;
@@ -307,7 +326,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
             difference = [calendar components:calendarUnit fromDate:fromDate toDate:toDate options:0];
         }
     }
-    
+
     return difference;
 }
 
