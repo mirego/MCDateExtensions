@@ -45,7 +45,7 @@ If you're using [`CocoaPods`](http://cocoapods.org/), there's nothing simpler.
 Add the following to your [`Podfile`](http://docs.cocoapods.org/podfile.html)
 and run `pod install`
 
-```
+```ruby
 pod 'MCDateExtensions', :git => 'https://github.com/mirego/MCDateExtensions.git'
 ```
 
