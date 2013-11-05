@@ -1,4 +1,6 @@
 # MCDateExtensions - Having fun with NSDate.
+[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/MCDateExtensions/badge.png)](https://cocoadocs.org/docsets/MCDateExtensions)
+[![Badge w/ Platform](https://cocoapod-badges.herokuapp.com/p/MCDateExtensions/badge.png)](https://cocoadocs.org/docsets/MCDateExtensions)
 
 ```objective-c
 #import "NSDate+MCExtensions.h"
