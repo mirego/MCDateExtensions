@@ -278,7 +278,7 @@ static NSCalendar *mcCurrentCalendarCache = nil;
             break;
 
         case NSWeekCalendarUnit:
-            [components setWeek:value];
+            [components setWeekOfYear:value];
             break;
 
         case NSDayCalendarUnit:
@@ -342,12 +342,12 @@ static NSCalendar *mcCurrentCalendarCache = nil;
 
 + (NSInteger)weeksBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
 {
-    return [[self differenceInCalendarUnit:NSWeekCalendarUnit betweenDate:fromDateTime andDate:toDateTime] week];
+    return [[self differenceInCalendarUnit:NSWeekCalendarUnit betweenDate:fromDateTime andDate:toDateTime] weekOfYear];
 }
 
 + (NSInteger)weeksBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime usingCalendar:(NSCalendar *)calendar
 {
-    return [[self differenceInCalendarUnit:NSWeekCalendarUnit betweenDate:fromDateTime andDate:toDateTime usingCalendar:calendar] week];
+    return [[self differenceInCalendarUnit:NSWeekCalendarUnit betweenDate:fromDateTime andDate:toDateTime usingCalendar:calendar] weekOfYear];
 }
 
 + (NSInteger)monthsBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
