@@ -56,7 +56,7 @@ Don't forget to `#import "NSDate+MCExtensions.h"` where it's needed.
 
 ## License
 
-MCDateExtensions is © 2013 [Mirego](http://www.mirego.com) and may be freely
+MCDateExtensions is © 2013-2015 [Mirego](http://www.mirego.com) and may be freely
 distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).
 See the [`LICENSE.md`](https://github.com/mirego/MCDateExtensions/blob/master/LICENSE.md) file.
 
