@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'MCDateExtensions_Example', :exclusive => true do
+  pod "MCDateExtensions", :path => "../"
+end
+
+target 'MCDateExtensions_Tests', :exclusive => true do
+  pod "MCDateExtensions", :path => "../"
+
+end

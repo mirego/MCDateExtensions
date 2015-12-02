@@ -1,0 +1,14 @@
+PODS:
+  - MCDateExtensions (1.0.2)
+
+DEPENDENCIES:
+  - MCDateExtensions (from `../`)
+
+EXTERNAL SOURCES:
+  MCDateExtensions:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MCDateExtensions: 93f067b198405405f12c73208619caa436e30bee
+
+COCOAPODS: 0.39.0
