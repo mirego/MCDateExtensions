@@ -1,4 +1,4 @@
-// Copyright (c) 2013, Mirego
+// Copyright (c) 2013-2015, Mirego
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/NSDate.h>
 
 @interface NSDate (MCExtensions)
 
@@ -38,16 +38,16 @@
 - (BOOL)isTomorrow;
 - (BOOL)isTomorrowUsingCalendar:(NSCalendar *)calendar;
 
-- (BOOL)isSameDayAsDate:(NSDate*)date;
-- (BOOL)isSameDayAsDate:(NSDate*)date usingCalendar:(NSCalendar *)calendar;
+- (BOOL)isSameDayAsDate:(NSDate *)date;
+- (BOOL)isSameDayAsDate:(NSDate *)date usingCalendar:(NSCalendar *)calendar;
 
 //------------------------------------------------------------------------------
 
 - (NSDateComponents *)components;
 - (NSDateComponents *)componentsUsingCalendar:(NSCalendar *)calendar;
 
-- (NSDateComponents *)componentsWithUnits:(NSUInteger)units;
-- (NSDateComponents *)componentsWithUnits:(NSUInteger)units usingCalendar:(NSCalendar *)calendar;
+- (NSDateComponents *)componentsWithUnits:(NSCalendarUnit)units;
+- (NSDateComponents *)componentsWithUnits:(NSCalendarUnit)units usingCalendar:(NSCalendar *)calendar;
 
 //------------------------------------------------------------------------------
 

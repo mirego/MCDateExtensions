@@ -20,7 +20,7 @@
   // Get all the details of a date
   NSDateComponents* todayBrokenDown = [today components];
   // ...with specific units
-  NSDateComponents* specificUnits = [today componentsWithUnits:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)];
+  NSDateComponents* specificUnits = [today componentsWithUnits:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)];
 
   // Some fun Maths!
   NSDate* sameDayNextYear = [today dateByAddingYears:1];
@@ -31,7 +31,7 @@
   NSDate* tomorrow = [today dateByAddingHours:24];
   NSDate* nextHour = [today dateByAddingMinutes:60];
   NSDate* inTwoMinutes = [today dateByAddingSeconds:120];
-  NSDate* inAFewSeconds = [today dateByAddingCalendarUnit:(NSSecondCalendarUnit) value:30];
+  NSDate* inAFewSeconds = [today dateByAddingCalendarUnit:(NSCalendarUnitSecond) value:30];
 
   // Differences
   NSInteger days = [NSDate daysBetweenDate:today andDate:tomorrow]; // returns 1
