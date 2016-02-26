@@ -5,3 +5,4 @@
 language: objective-c
 xcode_workspace: Example/MCDateExtensions.xcworkspace
 xcode_scheme: MCDateExtensions_Example
+xcode_sdk: iphonesimulator
