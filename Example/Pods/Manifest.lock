@@ -8,8 +8,6 @@ EXTERNAL SOURCES:
   MCDateExtensions:
     :path: "../"
 
-CHECKOUT OPTIONS: 
-
 SPEC CHECKSUMS:
   MCDateExtensions: 93f067b198405405f12c73208619caa436e30bee
 

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DCD50E005455B35F4D702743'
+               BlueprintIdentifier = 'DD438EEAB8E14AC659872C20'
                BlueprintName = 'MCDateExtensions'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libMCDateExtensions.a'>
