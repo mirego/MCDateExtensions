@@ -3,5 +3,5 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-xcode_project: Example/MCDateExtensions.xcworkspace
+xcode_workspace: Example/MCDateExtensions.xcworkspace
 xcode_scheme: MCDateExtensions_Example
