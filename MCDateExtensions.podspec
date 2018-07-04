@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'MCDateExtensions'
-  s.version  = '1.0.2'
+  s.version  = '1.0.3'
   s.license  = 'BSD 3-Clause'
   s.summary  = 'Extensions on the dates classes.'
   s.homepage = 'https://github.com/mirego/MCDateExtensions'
